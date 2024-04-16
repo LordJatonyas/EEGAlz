@@ -1,0 +1,4 @@
+name = "EEGAlz"
+uuid = "8be5671b-d0e1-475c-8538-069335f51e09"
+authors = ["Lee Chih Jung <54738966+LordJatonyas@users.noreply.github.com>"]
+version = "0.1.0"
