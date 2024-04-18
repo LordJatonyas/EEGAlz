@@ -34,19 +34,10 @@ begin
 	end
 end
 
-# ╔═╡ 3eae9452-1249-4880-a171-d644f367f9da
-hist_ends(df.Fp1, 1000, "Fp1") # seems ok
-
-# ╔═╡ 3fc02399-5f48-4e65-9a0c-d6937456a3dc
-hist_ends(df.Fp2, 1000, "Fp2") # seems ok
-
-# ╔═╡ 65bfb7ff-a7df-4e7c-9ab2-9239a6e689ac
-hist_ends(df.F3, 1000, "F3")
-
 # ╔═╡ b7d81afb-dfb3-42e1-96e9-f92fcf7f0cd1
 begin
 	# there don't seem to be anomalous data points! So normalise as per usual
-	function normalise_channel(channel, positive_cutoff, negative_cutoff)
+	function normalise_channel(channel)
 		largest_value = maximum(channel)
 		smallest_value = minimum(channel)
 		for i = 1:length(channel)
@@ -59,20 +50,21 @@ begin
 	end
 end
 
-# ╔═╡ 44f73ef0-afea-4d59-92be-bfba02482694
+# ╔═╡ 1b347b1e-39da-4038-b6c6-461e6163007c
+begin
+	for i in names(df)
+		normalise_channel(df[!, i])
+	end
+end
 
+# ╔═╡ 921db00e-2942-4132-bd37-bc37f3023f9b
 
-# ╔═╡ dd492d17-549a-4962-ad63-9bb40df946cb
-println(maximum(df.Fp1), '\n', minimum(df.Fp1))
 
 # ╔═╡ Cell order:
 # ╠═70f3e92c-2339-42ea-9c73-9ab07730f569
 # ╠═3c22c13d-437b-42f1-8532-c9888cb3f0ff
 # ╠═5fee6ea7-34b9-4144-a998-0079b385856f
 # ╠═a255a0c1-31cf-446f-82ea-827326805b1b
-# ╠═3eae9452-1249-4880-a171-d644f367f9da
-# ╠═3fc02399-5f48-4e65-9a0c-d6937456a3dc
-# ╠═65bfb7ff-a7df-4e7c-9ab2-9239a6e689ac
 # ╠═b7d81afb-dfb3-42e1-96e9-f92fcf7f0cd1
-# ╠═44f73ef0-afea-4d59-92be-bfba02482694
-# ╠═dd492d17-549a-4962-ad63-9bb40df946cb
+# ╠═1b347b1e-39da-4038-b6c6-461e6163007c
+# ╠═921db00e-2942-4132-bd37-bc37f3023f9b
